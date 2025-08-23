@@ -535,7 +535,7 @@
                     "Secure authentication system"
                 ],
                 liveUrl: "https://www.creditsfixer.com/",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/created_fixer"
             },
             onlineClothStore: {
                 title: "Online Cloth Store - E-commerce",
@@ -559,7 +559,7 @@
                     "Product reviews and ratings"
                 ],
                 liveUrl: "http://www.ecommercelaravel.000webhostapp.com/",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/eCom-en-laravel"
             },
             onlineDoctor: {
                 title: "Online Doctor Appointment System",
@@ -582,7 +582,7 @@
                     "Doctor management panel"
                 ],
                 liveUrl: "#",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/doctor_search"
             },
             onlineGrocery: {
                 title: "Online Grocery Store - E-commerce",
@@ -605,7 +605,7 @@
                     "Advanced search and filtering"
                 ],
                 liveUrl: "http://www.ecomgrocerystore.com/",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/ecomphp"
             },
             onlineLaptop: {
                 title: "Online Laptop Installment Store",
@@ -847,7 +847,7 @@
                     "Responsive design for all devices"
                 ],
                 liveUrl: "#",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/imagify_mern"
             },
             meshop: {
                 title: "MEshop – MERN E-commerce",
@@ -872,7 +872,7 @@
                     "Admin dashboard for product management"
                 ],
                 liveUrl: "#",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/mern-ecommerce"
             },
             edumaster: {
                 title: "EduMaster – Online Course Platform",
@@ -897,7 +897,7 @@
                     "Review and rating system for courses"
                 ],
                 liveUrl: "#",
-                sourceUrl: "#"
+                sourceUrl: "https://github.com/naeemliaqatweb/mern-online-course-e-learning-educational"
             }
         };
 
@@ -1201,97 +1201,29 @@
             }
         });
 
-        // Resume download function
-//         function downloadResume() {
-//             // Create a sample resume content
-//             const resumeContent = `
-// NAEEM LIAQAT
-// Software Engineer
-// Email: naeemliaqat41@yahoo.com | Phone: 0343-3669641 | Location: Barkat Market Lahore, Pakistan
+        function downloadResume(event) {
+            // Path to your PDF file
+            const resumePath = "./assets/NaeemLiaqat-1-25.pdf";
 
-// PROFESSIONAL SUMMARY
-// Experienced Software Engineer with a proven track record in web development and software maintenance. 
-// Skilled in debugging, troubleshooting, and delivering optimized solutions for enhanced software performance.
-// Expertise in PHP, Laravel, WordPress, and modern web technologies.
+            // Create a temporary <a> element for download
+            const a = document.createElement('a');
+            a.href = resumePath;
+            a.download = 'Naeem_Liaqat_Resume.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 
-// TECHNICAL SKILLS
-// • Frontend: HTML5, CSS3, JavaScript, jQuery, Bootstrap, Tailwind CSS, MUI CSS
-// • Backend: PHP, Laravel, Yii Framework, WordPress
-// • Databases: MySQL
-// • Tools: Git, REST APIs, AJAX
-// • Other: Responsive Design, SEO Optimization, Performance Optimization
-
-// PROFESSIONAL EXPERIENCE
-// Software Engineer | OptimaGeeks | 06/2022 - Present
-// • Proficient in debugging and troubleshooting code to identify and resolve issues efficiently
-// • Leveraged Chart.js for creating dynamic and interactive data visualizations
-// • Proficient in WordPress plugin and theme customization, resolving bugs, and optimizing websites
-
-// Associate Software Engineer | Brown Tech Int. | 08/2021 - 06/2022
-// • Led the development of the View Home System project with user registration and role management
-// • Developed Tatum Gaming Hub with Tatum API BNB account creation during registration
-
-// PHP/Laravel Web Developer | Arysynce Technology | 02/2021 - 08/2021
-// • Designed and developed user authentication systems using core PHP
-// • Created custom websites from scratch, optimizing them for performance
-
-// EDUCATION
-// Bachelor of Software Engineering | Virtual University of Pakistan | 2017 - 2021
-
-// NOTABLE PROJECTS
-// • E-Commerce Platforms: Multiple online stores with payment integration
-// • Real Estate Platform: Yii2-based property sales and rentals
-// • LMS Platform: WordPress-based learning management system
-// • AI Image Generator: MERN stack application with ClipDrop API
-//             `.trim();
-
-//             // Create and download the resume
-//             const blob = new Blob([resumeContent], { type: 'text/plain' });
-//             const url = window.URL.createObjectURL(blob);
-//             const a = document.createElement('a');
-//             a.href = url;
-//             a.download = 'Naeem_Liaqat_Resume.txt';
-//             document.body.appendChild(a);
-//             a.click();
-//             document.body.removeChild(a);
-//             window.URL.revokeObjectURL(url);
-
-//             // Show download confirmation
-//             const originalText = event.target.innerHTML;
-//             event.target.innerHTML = '✅ Downloaded!';
-//             event.target.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+            // Show download confirmation
+            const originalText = event.target.innerHTML;
+            event.target.innerHTML = '✅ Downloaded!';
+            event.target.style.background = 'linear-gradient(45deg, #10b981, #059669)';
             
-//             setTimeout(() => {
-//                 event.target.innerHTML = originalText;
-//                 event.target.style.background = '';
-//                 event.target.className = event.target.className;
-//             }, 2000);
-//         }
-
-
-function downloadResume(event) {
-        // Path to your PDF file
-        const resumePath = "./assets/NaeemLiaqat-1-25.pdf";
-
-        // Create a temporary <a> element for download
-        const a = document.createElement('a');
-        a.href = resumePath;
-        a.download = 'Naeem_Liaqat_Resume.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        // Show download confirmation
-        const originalText = event.target.innerHTML;
-        event.target.innerHTML = '✅ Downloaded!';
-        event.target.style.background = 'linear-gradient(45deg, #10b981, #059669)';
-        
-        setTimeout(() => {
-            event.target.innerHTML = originalText;
-            event.target.style.background = '';
-            event.target.className = event.target.className;
-        }, 2000);
-    }
+            setTimeout(() => {
+                event.target.innerHTML = originalText;
+                event.target.style.background = '';
+                event.target.className = event.target.className;
+            }, 2000);
+        }
 
         // Typing animation
         function setupTypingAnimation() {
