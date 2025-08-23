@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naeem Liaqat - Software Engineer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotateY(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(5deg);
+            }
+        }
+        
+        @keyframes thunderFlash {
+            0%, 100% {
+                opacity: 0;
+                filter: brightness(1);
+            }
+            5% {
+                opacity: 1;
+                filter: brightness(2);
+            }
+            10% {
+                opacity: 0.8;
+                filter: brightness(1.8);
+            }
+            15% {
+                opacity: 1;
+                filter: brightness(2.2);
+            }
+            20%, 100% {
+                opacity: 0;
+                filter: brightness(1);
+            }
+        }
+
+        @keyframes cloudMove {
+            0% {
+                transform: translateX(-100%) translateY(0);
+            }
+            50% {
+                transform: translateX(0) translateY(-20px);
+            }
+            100% {
+                transform: translateX(100%) translateY(0);
+            }
+        }
+        
+        @keyframes rainDrop {
+            0% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-thunder {
+            animation: thunderFlash 3s ease-in-out;
+        }
+
+        .animate-cloud {
+            animation: cloudMove 20s linear infinite;
+        }
+        
+        .animate-rain {
+            animation: rainDrop 1.5s linear infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-card:hover {
+            transform: perspective(1000px) translateY(-5px) rotateX(10deg) rotateY(5deg) scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: perspective(1000px) translateY(-10px) rotateX(5deg) rotateY(3deg) scale(1.02);
+            transition: all 0.4s ease;
+        }
+        
+        .floating-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .typing-text::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .animated-block {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(147, 51, 234, 0.7));
+            border-radius: 4px;
+            z-index: -1;
+            transform-style: preserve-3d;
+        }
+
+        .thunder-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            mix-blend-mode: overlay;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(30px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .lightning {
+            position: absolute;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+            width: 2px;
+            z-index: -1;
+            opacity: 0;
+            transform-origin: top center;
+        }
+
+        .rain-drop {
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8));
+            border-radius: 0 0 5px 5px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5), transparent);
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 min-h-screen text-white overflow-x-hidden">
+    <!-- Thunder Light Effect -->
+    <div id="thunderLight" class="thunder-light"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">NL</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="#about" class="nav-link hover:text-blue-400 transition-colors cursor-pointer">About</a>
+                    <a href="#skills" class="nav-link hover:text-blue-400 transition-colors cursor-pointer">Skills</a>
+                    <a href="#projects" class="nav-link hover:text-blue-400 transition-colors cursor-pointer">Projects</a>
+                    <a href="#contact" class="nav-link hover:text-blue-400 transition-colors cursor-pointer">Contact</a>
+                    <button onclick="downloadResume()" class="download-btn text-white font-semibold px-6 py-2 rounded-full hover:scale-105 transition-transform">
+                        📄 Download Resume
+                    </button>
+                </div>
+                <button id="menu-btn" class="md:hidden">
+                    <div class="w-6 h-0.5 bg-white mb-1 transition-all"></div>
+                    <div class="w-6 h-0.5 bg-white mb-1 transition-all"></div>
+                    <div class="w-6 h-0.5 bg-white transition-all"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-md z-40 transform -translate-x-full transition-transform md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+            <a href="#home" class="nav-link hover:text-blue-400 transition-colors mobile-link">Home</a>
+            <a href="#about" class="nav-link hover:text-blue-400 transition-colors mobile-link">About</a>
+            <a href="#skills" class="nav-link hover:text-blue-400 transition-colors mobile-link">Skills</a>
+            <a href="#projects" class="nav-link hover:text-blue-400 transition-colors mobile-link">Projects</a>
+            <a href="#contact" class="nav-link hover:text-blue-400 transition-colors mobile-link">Contact</a>
+            <button onclick="downloadResume()" class="download-btn text-white font-semibold px-6 py-3 rounded-full">
+                📄 Download Resume
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- 3D Animated Blocks -->
+        <div class="animated-block animate-float" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="animated-block animate-float" style="top: 60%; left: 25%; animation-delay: 1s;"></div>
+        <div class="animated-block animate-float" style="top: 30%; left: 75%; animation-delay: 2s;"></div>
+        <div class="animated-block animate-float" style="top: 80%; left: 65%; animation-delay: 3s;"></div>
+        
+        <!-- Rain drops for home section -->
+        <div id="home-rain-container" class="absolute inset-0 pointer-events-none"></div>
+        
+        <!-- Clouds for home section -->
+        <div class="cloud animate-cloud" style="width: 300px; height: 100px; top: 10%; left: 0%; animation-delay: 0s;"></div>
+        <div class="cloud animate-cloud" style="width: 250px; height: 80px; top: 25%; left: 0%; animation-delay: 5s;"></div>
+        <div class="cloud animate-cloud" style="width: 200px; height: 70px; top: 40%; left: 0%; animation-delay: 10s;"></div>
+        
+        <div class="relative z-10 text-center px-6 animate-fadeInUp">
+            <!-- Profile Image -->
+            <div class="mb-8 mx-auto w-48 h-48 relative">
+                <img src="./assets/images/Naeem-Liaqat.png" 
+                     alt="Naeem Liaqat" class="w-full h-full object-cover rounded-full border-4 border-white/20 shadow-lg">
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 gradient-text">
+                Naeem Liaqat
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300 typing-text" id="typing-text">
+                Software Engineer
+            </p>
+            <p class="text-lg mb-12 text-gray-400 max-w-2xl mx-auto">
+                4+ Years of Experience in Modern Web Development
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('projects')" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105 hover:rotate-1">
+                    View My Work
+                </button>
+                <button onclick="scrollToSection('contact')" class="border border-white/30 hover:bg-white/10 px-8 py-3 rounded-full transition-all transform hover:scale-105 hover:-rotate-1">
+                    Get In Touch
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 relative">
+        <!-- Background Elements -->
+        <div class="animated-block animate-float" style="top: 20%; left: 5%; animation-delay: 0s;"></div>
+        <div class="animated-block animate-float" style="top: 70%; left: 90%; animation-delay: 2s;"></div>
+        
+        <!-- Rain drops for about section -->
+        <div id="about-rain-container" class="absolute inset-0 pointer-events-none"></div>
+        
+        <!-- Clouds for about section -->
+        <div class="cloud animate-cloud" style="width: 220px; height: 80px; top: 15%; left: 0%; animation-delay: 2s;"></div>
+        <div class="cloud animate-cloud" style="width: 180px; height: 60px; top: 35%; left: 0%; animation-delay: 7s;"></div>
+        
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fadeInUp">
+                    <p class="text-lg leading-relaxed mb-6 text-gray-300">
+                        I'm a dedicated software engineer with three plus years of experience, turning complex problems into elegant solutions through code.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6 text-gray-300">
+                        My expertise spans across multiple frameworks and technologies, allowing me to deliver comprehensive solutions from conception to deployment. I'm always eager to learn new technologies and tackle challenging problems.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-sm hover:scale-110 transition-transform cursor-pointer">Problem Solver</span>
+                        <span class="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm hover:scale-110 transition-transform cursor-pointer">Team Player</span>
+                        <span class="bg-green-600/20 text-green-300 px-3 py-1 rounded-full text-sm hover:scale-110 transition-transform cursor-pointer">Fast Learner</span>
+                    </div>
+                </div>
+                <div class="relative floating-card">
+                    <div class="w-80 h-80 mx-auto bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-3xl backdrop-blur-sm border border-white/10 flex items-center justify-center transform hover:scale-105 transition-transform">
+                        <div class="text-8xl animate-float">👨‍💻</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section End Effect -->
+        <div class="section-divider mt-20"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-black/20 relative">
+        <!-- Background Elements -->
+        <div class="animated-block animate-float" style="top: 15%; left: 7%; animation-delay: 1s;"></div>
+        <div class="animated-block animate-float" style="top: 85%; left: 92%; animation-delay: 3s;"></div>
+        
+        <!-- Rain drops for projects section -->
+        <div id="projects-rain-container" class="absolute inset-0 pointer-events-none"></div>
+        
+        <!-- Clouds for projects section -->
+        <div class="cloud animate-cloud" style="width: 200px; height: 75px; top: 12%; left: 0%; animation-delay: 8s;"></div>
+        <div class="cloud animate-cloud" style="width: 160px; height: 60px; top: 32%; left: 0%; animation-delay: 13s;"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Portfolio</h2>
+            <p class="text-center text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                Here are some of my recent projects. Click on any project to view more details.
+            </p>
+            
+            <!-- Project Category Tabs -->
+            <div class="flex flex-wrap justify-center mb-12 gap-4">
+                <button onclick="showProjects('all')" class="project-tab active bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="all">
+                    All Projects
+                </button>
+                <button onclick="showProjects('laravel')" class="project-tab bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="laravel">
+                    🅻 Laravel
+                </button>
+                <button onclick="showProjects('yii2')" class="project-tab bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="yii2">
+                    🌊 Yii2
+                </button>
+                <button onclick="showProjects('wordpress')" class="project-tab bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="wordpress">
+                    🌐 WordPress
+                </button>
+                <button onclick="showProjects('mern')" class="project-tab bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="mern">
+                    📚 MERN Stack
+                </button>
+                <button onclick="showProjects('php')" class="project-tab bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105" data-category="php">
+                    🐘 PHP
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+        
+        <!-- Section End Effect -->
+        <div class="section-divider mt-20"></div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black/80 modal-backdrop hidden items-center justify-center z-50 p-4">
+        <div class="bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/20">
+            <div class="sticky top-0 bg-gradient-to-r from-gray-900 to-blue-900 p-6 border-b border-white/20 flex justify-between items-center">
+                <h2 id="modalTitle" class="text-2xl font-bold gradient-text">Project Details</h2>
+                <button onclick="closeProjectModal()" class="text-gray-400 hover:text-white text-2xl transform hover:scale-110 transition-all">
+                    ✕
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div id="modalImageContainer" class="relative group">
+                        <img id="modalImage" src="" alt="Project Screenshot" class="w-full h-64 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-300">Project Overview</h3>
+                        <p id="modalDescription" class="text-gray-300 leading-relaxed mb-4"></p>
+                        <div id="modalTechnologies" class="flex flex-wrap gap-2 mb-4"></div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Category:</span>
+                                <span id="modalCategory" class="text-white"></span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Client:</span>
+                                <span id="modalClient" class="text-white"></span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Duration:</span>
+                                <span id="modalDuration" class="text-white"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-3 text-green-300">Key Features</h4>
+                    <ul id="modalFeatures" class="space-y-2 text-gray-300"></ul>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-white/20 flex flex-col sm:flex-row gap-4">
+                    <button id="liveDemoBtn" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        🔗 View Live Demo
+                    </button>
+                    <button id="sourceCodeBtn" class="border border-white/30 hover:bg-white/10 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        📂 View Source Code
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 relative">
+        <!-- Background Elements -->
+        <div class="animated-block animate-float" style="top: 20%; left: 10%; animation-delay: 2s;"></div>
+        <div class="animated-block animate-float" style="top: 70%; left: 85%; animation-delay: 4s;"></div>
+        
+        <!-- Rain drops for contact section -->
+        <div id="contact-rain-container" class="absolute inset-0 pointer-events-none"></div>
+        
+        <!-- Clouds for contact section -->
+        <div class="cloud animate-cloud" style="width: 180px; height: 65px; top: 15%; left: 0%; animation-delay: 10s;"></div>
+        <div class="cloud animate-cloud" style="width: 220px; height: 80px; top: 40%; left: 0%; animation-delay: 15s;"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">Get In Touch</h2>
+            <p class="text-xl mb-12 text-gray-300">
+                Thanks for visiting my portfolio. If you're interested in working together, feel free to reach out.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-6 floating-card transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4 animate-float">📧</div>
+                    <h3 class="font-semibold mb-2">Email</h3>
+                    <p class="text-gray-400">naeemliaqat41@yahoo.com</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-500/20 to-blue-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-6 floating-card transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4 animate-float" style="animation-delay: -1s;">📞</div>
+                    <h3 class="font-semibold mb-2">Phone</h3>
+                    <p class="text-gray-400">0343-3669641</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-500/20 to-pink-600/20 backdrop-blur-sm border border-white/10 rounded-2xl p-6 floating-card transform hover:scale-105 transition-all">
+                    <div class="text-3xl mb-4 animate-float" style="animation-delay: -2s;">📍</div>
+                    <h3 class="font-semibold mb-2">Location</h3>
+                    <p class="text-gray-400">Barkat Market Lahore, Pakistan</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 floating-card">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Your Name" class="bg-white/10 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors transform focus:scale-105">
+                        <input type="email" placeholder="Your Email" class="bg-white/10 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors transform focus:scale-105">
+                    </div>
+                    <input type="text" placeholder="Subject" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors transform focus:scale-105">
+                    <textarea rows="5" placeholder="Your Message" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors resize-none transform focus:scale-105"></textarea>
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-white/10">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">&copy; 2025 Naeem Liaqat. All rights reserved.</p>
+            <p class="text-gray-500 mt-2">Designed by Naeem Liaqat</p>
+        </div>
+    </footer>
+
+    <script>
+        // Project data
+        const projectData = {
+            // PHP Projects
+            creditFixers: {
+                title: "Credits Fixers - Role Management System",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+                category: "php",
+                client: "AreSync IT Consultant",
+                duration: "Ongoing",
+                description: "Comprehensive role management system with Admin, Company, and Agent roles for credit repair services.",
+                technologies: [
+                    { name: "PHP", color: "purple" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Three-tier role system: Admin, Company, Agent",
+                    "Customer request management",
+                    "Admin control panel for user management",
+                    "Company and agent performance tracking",
+                    "Secure authentication system"
+                ],
+                liveUrl: "https://www.creditsfixer.com/",
+                sourceUrl: "#"
+            },
+            onlineClothStore: {
+                title: "Online Cloth Store - E-commerce",
+                image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800",
+                category: "php",
+                client: "Self Project",
+                duration: "1 month",
+                description: "E-commerce clothing store built with core PHP featuring comprehensive shopping functionality.",
+                technologies: [
+                    { name: "PHP", color: "purple" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Product categories and catalog",
+                    "Shopping cart and checkout",
+                    "Payment gateway integration",
+                    "Coupon code system",
+                    "Order history and tracking",
+                    "Product reviews and ratings"
+                ],
+                liveUrl: "http://www.ecommercelaravel.000webhostapp.com/",
+                sourceUrl: "#"
+            },
+            onlineDoctor: {
+                title: "Online Doctor Appointment System",
+                image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800",
+                category: "php",
+                client: "Local Client",
+                duration: "1 month",
+                description: "Platform for booking doctor appointments online with approval workflow and notifications.",
+                technologies: [
+                    { name: "PHP", color: "purple" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "User and doctor registration",
+                    "Appointment booking system",
+                    "Admin approval workflow",
+                    "Email notifications",
+                    "Doctor management panel"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            },
+            onlineGrocery: {
+                title: "Online Grocery Store - E-commerce",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800",
+                category: "php",
+                client: "University Project",
+                duration: "3 months",
+                description: "E-commerce platform for grocery delivery with recommendation system and membership benefits.",
+                technologies: [
+                    { name: "PHP", color: "purple" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Product recommendation system",
+                    "Membership discounts",
+                    "Order tracking",
+                    "User reviews and suggestions",
+                    "Advanced search and filtering"
+                ],
+                liveUrl: "http://www.ecomgrocerystore.com/",
+                sourceUrl: "#"
+            },
+            onlineLaptop: {
+                title: "Online Laptop Installment Store",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800",
+                category: "php",
+                client: "Local Client",
+                duration: "2 weeks",
+                description: "E-commerce platform for laptop installment purchases with payment plan calculations.",
+                technologies: [
+                    { name: "PHP", color: "purple" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Installment calculation panel",
+                    "Product catalog",
+                    "Checkout with COD & credit card",
+                    "Order history",
+                    "Payment plan management"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            },
+
+            // Laravel Projects
+            arcadeGame: {
+                title: "Arcade Game with Tatum API",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
+                category: "laravel",
+                client: "Brown Tech Company",
+                duration: "2 months",
+                description: "Arcade game platform using Tatum API for BNB transactions. Players can purchase game sessions, play games, and top winners receive rewards in BNB.",
+                technologies: [
+                    { name: "Laravel", color: "red" },
+                    { name: "Tatum API", color: "blue" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "JavaScript", color: "yellow" },
+                    { name: "BNB Blockchain", color: "yellow" }
+                ],
+                features: [
+                    "User registration with Tatum BNB account creation",
+                    "Game session purchase system",
+                    "BNB balance display for users",
+                    "Real-time leaderboard showing top 10 players",
+                    "Admin panel for game management",
+                    "Automated reward distribution to top 3 winners",
+                    "Secure BNB transactions between user and admin accounts"
+                ],
+                liveUrl: "https://reading.brownetech.com/",
+                sourceUrl: "#"
+            },
+            bookPublish: {
+                title: "Book Publishing Platform",
+                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800",
+                category: "laravel",
+                client: "Brown Tech Company",
+                duration: "2 days",
+                description: "Comprehensive book publishing platform with role-based access for admins, authors, and designers.",
+                technologies: [
+                    { name: "Laravel", color: "red" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Admin role: Add authors/designers, approve books, update profiles",
+                    "Author role: Add books, track pending/publish status",
+                    "Designer role: Add designs, track approval status",
+                    "Notification system for admins",
+                    "Book status management (pending, approved, published)"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            },
+
+            // Yii2 Projects
+            asboEstates: {
+                title: "Asbo Estates - Real Estate Platform",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
+                category: "yii2",
+                client: "Real Estate Client",
+                duration: "3 months",
+                description: "Yii2-based real estate platform specializing in property sales and rentals with advanced search and management features.",
+                technologies: [
+                    { name: "Yii2", color: "blue" },
+                    { name: "MySQL", color: "orange" },
+                    { name: "jQuery", color: "blue" },
+                    { name: "Bootstrap", color: "purple" }
+                ],
+                features: [
+                    "Property listing management",
+                    "Advanced search and filtering",
+                    "User registration and favorites",
+                    "Admin dashboard for property management",
+                    "Responsive design for all devices"
+                ],
+                liveUrl: "https://asboestates.com/",
+                sourceUrl: "#"
+            },
+
+            // WordPress Projects
+            pldLiteracy: {
+                title: "PLD Literacy - WooCommerce PDF Store",
+                image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800",
+                category: "wordpress",
+                client: "Company Project",
+                duration: "Ongoing",
+                description: "WooCommerce-based platform specializing in selling PDF products with advanced customization and optimization.",
+                technologies: [
+                    { name: "WordPress", color: "blue" },
+                    { name: "WooCommerce", color: "purple" },
+                    { name: "PHP", color: "purple" },
+                    { name: "JavaScript", color: "yellow" }
+                ],
+                features: [
+                    "Custom PDF product delivery system",
+                    "License key management",
+                    "Custom Gutenberg blocks",
+                    "Email validation before registration",
+                    "Performance optimization with caching",
+                    "Custom checkout process"
+                ],
+                liveUrl: "https://pld-literacy.org/",
+                sourceUrl: "#"
+            },
+            advancedTool: {
+                title: "Advanced Tool - Drill E-commerce",
+                image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800",
+                category: "wordpress",
+                client: "Company Project",
+                duration: "2 months",
+                description: "WooCommerce-powered eCommerce website specializing in drill sales with multiple payment options.",
+                technologies: [
+                    { name: "WordPress", color: "blue" },
+                    { name: "WooCommerce", color: "purple" },
+                    { name: "Elementor Pro", color: "blue" },
+                    { name: "Authorize.Net", color: "green" }
+                ],
+                features: [
+                    "Product catalog with multiple drill categories",
+                    "Authorize.Net and COD payment integration",
+                    "Elementor Pro designed pages",
+                    "Responsive design",
+                    "Advanced product filtering"
+                ],
+                liveUrl: "https://advancedtool.com/",
+                sourceUrl: "#"
+            },
+            bellasephina: {
+                title: "Bellasephina - Beauty E-commerce",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+                category: "wordpress",
+                client: "Company Project",
+                duration: "1.5 months",
+                description: "WordPress WooCommerce-based eCommerce website for beauty products with enhanced checkout and shipping.",
+                technologies: [
+                    { name: "WordPress", color: "blue" },
+                    { name: "WooCommerce", color: "purple" },
+                    { name: "FunnelKit", color: "purple" },
+                    { name: "Astra Theme", color: "blue" }
+                ],
+                features: [
+                    "FunnelKit checkout optimization",
+                    "Custom shipping rules by category",
+                    "Astra theme customization",
+                    "Staging to live migration",
+                    "Image watermarking and download protection"
+                ],
+                liveUrl: "https://bellasephina.com/",
+                sourceUrl: "#"
+            },
+            getgaea: {
+                title: "GetGaea - WooCommerce Customization",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800",
+                category: "wordpress",
+                client: "Company Project",
+                duration: "1 month",
+                description: "Customized WooCommerce plugin for enhanced functionality and user experience on the product shop page.",
+                technologies: [
+                    { name: "WordPress", color: "blue" },
+                    { name: "WooCommerce", color: "purple" },
+                    { name: "PHP", color: "purple" },
+                    { name: "JavaScript", color: "yellow" }
+                ],
+                features: [
+                    "Dynamic product pricing",
+                    "Optimized Add to Cart functionality",
+                    "Subscription discount integration",
+                    "Redesigned shop page layout",
+                    "Enhanced pricing display logic"
+                ],
+                liveUrl: "https://getgaea.com/",
+                sourceUrl: "#"
+            },
+            webinar: {
+                title: "Webinar LMS Platform",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+                category: "wordpress",
+                client: "Company Project",
+                duration: "2 months",
+                description: "WordPress-based LMS platform with structured online learning, payment integration, and membership controls.",
+                technologies: [
+                    { name: "WordPress", color: "blue" },
+                    { name: "LMS Plugin", color: "purple" },
+                    { name: "Stripe", color: "green" },
+                    { name: "Elementor", color: "blue" }
+                ],
+                features: [
+                    "MS LMS Plugin & Stripe integration",
+                    "Dual login system (UID & paid registration)",
+                    "Course progression with sequential unlocking",
+                    "Custom video delivery upon completion",
+                    "Membership & content restriction"
+                ],
+                liveUrl: "https://webinar.tradetravelchill.club/",
+                sourceUrl: "#"
+            },
+
+            // MERN Stack Projects
+            imagify: {
+                title: "Imagify – AI Image Generator",
+                image: "https://images.unsplash.com/photo-1643330683233-ff2ac89b002c?w=800",
+                category: "mern",
+                client: "Personal Project",
+                duration: "3 months",
+                description: "AI-powered web application that generates images from text prompts using the ClipDrop API. Built with the MERN stack.",
+                technologies: [
+                    { name: "MongoDB", color: "green" },
+                    { name: "Express.js", color: "yellow" },
+                    { name: "React", color: "cyan" },
+                    { name: "Node.js", color: "green" },
+                    { name: "ClipDrop API", color: "blue" }
+                ],
+                features: [
+                    "Text-to-image generation using AI",
+                    "User authentication and profile management",
+                    "Image gallery for generated images",
+                    "Download and share functionality",
+                    "Responsive design for all devices"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            },
+            meshop: {
+                title: "MEshop – MERN E-commerce",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+                category: "mern",
+                client: "Personal Project",
+                duration: "4 months",
+                description: "Full-featured E-commerce web application built using the MERN stack with product management and payment integration.",
+                technologies: [
+                    { name: "MongoDB", color: "green" },
+                    { name: "Express.js", color: "yellow" },
+                    { name: "React", color: "cyan" },
+                    { name: "Node.js", color: "green" },
+                    { name: "Stripe", color: "purple" }
+                ],
+                features: [
+                    "Product catalog with categories and filters",
+                    "Shopping cart and checkout process",
+                    "User authentication and profile management",
+                    "Payment integration with Stripe",
+                    "Order history and tracking",
+                    "Admin dashboard for product management"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            },
+            edumaster: {
+                title: "EduMaster – Online Course Platform",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+                category: "mern",
+                client: "Personal Project",
+                duration: "5 months",
+                description: "Dynamic online course web application built using the MERN stack with video streaming and progress tracking.",
+                technologies: [
+                    { name: "MongoDB", color: "green" },
+                    { name: "Express.js", color: "yellow" },
+                    { name: "React", color: "cyan" },
+                    { name: "Node.js", color: "green" },
+                    { name: "Video.js", color: "blue" }
+                ],
+                features: [
+                    "Course catalog with categories",
+                    "Video streaming and progress tracking",
+                    "User enrollment and certificate generation",
+                    "Instructor dashboard for course management",
+                    "Payment integration for course purchases",
+                    "Review and rating system for courses"
+                ],
+                liveUrl: "#",
+                sourceUrl: "#"
+            }
+        };
+
+        // Function to render projects based on category
+        function renderProjects(category = 'all') {
+            const projectsGrid = document.getElementById('projects-grid');
+            projectsGrid.innerHTML = '';
+
+            const filteredProjects = Object.entries(projectData).filter(([key, project]) => 
+                category === 'all' || project.category === category
+            );
+
+            filteredProjects.forEach(([key, project], index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card rounded-2xl p-6 cursor-pointer floating-card opacity-0 transform translate-y-4';
+                projectCard.style.animationDelay = `${index * 0.1}s`;
+                
+                projectCard.innerHTML = `
+                    <div class="h-48 bg-gradient-to-br from-${getCategoryColor(project.category)}-500 to-${getCategoryColor(project.category)}-600 rounded-xl mb-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('${project.image}')] bg-cover bg-center opacity-70"></div>
+                        <div class="text-4xl z-10 animate-float" style="animation-delay: -${index}s;">${getCategoryIcon(project.category)}</div>
+                        <div class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full text-xs text-white">
+                            ${getCategoryLabel(project.category)}
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">${project.title}</h3>
+                    <p class="text-gray-400 mb-4 line-clamp-3">${project.description.substring(0, 120)}...</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.technologies.slice(0, 3).map(tech => 
+                            `<span class="bg-${tech.color}-600/20 text-${tech.color}-300 px-2 py-1 rounded text-xs">${tech.name}</span>`
+                        ).join('')}
+                        ${project.technologies.length > 3 ? `<span class="text-gray-400 text-xs">+${project.technologies.length - 3} more</span>` : ''}
+                    </div>
+                    <button class="text-blue-400 hover:text-blue-300 font-medium hover:scale-105 transition-transform">View Details →</button>
+                `;
+
+                projectCard.addEventListener('click', () => openProjectModal(key));
+                projectsGrid.appendChild(projectCard);
+
+                // Animate in
+                setTimeout(() => {
+                    projectCard.style.opacity = '1';
+                    projectCard.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+
+        // Helper functions
+        function getCategoryColor(category) {
+            const colors = {
+                'laravel': 'red',
+                'yii2': 'blue',
+                'wordpress': 'blue',
+                'mern': 'green',
+                'php': 'purple'
+            };
+            return colors[category] || 'blue';
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                'laravel': '🅻',
+                'yii2': '🌊',
+                'wordpress': '🌐',
+                'mern': '📚',
+                'php': '🐘'
+            };
+            return icons[category] || '💻';
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'laravel': 'Laravel',
+                'yii2': 'Yii2',
+                'wordpress': 'WordPress',
+                'mern': 'MERN Stack',
+                'php': 'PHP'
+            };
+            return labels[category] || 'Web Dev';
+        }
+
+        // Thunder light effect function
+        function showThunderLight() {
+            const thunderLight = document.getElementById('thunderLight');
+            thunderLight.classList.add('animate-thunder');
+            
+            setTimeout(() => {
+                thunderLight.classList.remove('animate-thunder');
+            }, 3000);
+        }
+
+        // Create lightning effect between blocks
+        function createLightning() {
+            const blocks = document.querySelectorAll('.animated-block');
+            if (blocks.length < 2) return;
+            
+            // Remove existing lightning
+            document.querySelectorAll('.lightning').forEach(el => el.remove());
+            
+            // Create lightning between random blocks
+            const block1 = blocks[Math.floor(Math.random() * blocks.length)];
+            const block2 = blocks[Math.floor(Math.random() * blocks.length)];
+            
+            if (block1 && block2 && block1 !== block2) {
+                const rect1 = block1.getBoundingClientRect();
+                const rect2 = block2.getBoundingClientRect();
+                
+                const x1 = rect1.left + rect1.width / 2;
+                const y1 = rect1.top + rect1.height / 2;
+                const x2 = rect2.left + rect2.width / 2;
+                const y2 = rect2.top + rect2.height / 2;
+                
+                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                
+                const lightning = document.createElement('div');
+                lightning.className = 'lightning animate-thunder';
+                lightning.style.width = '2px';
+                lightning.style.height = `${length}px`;
+                lightning.style.left = `${x1}px`;
+                lightning.style.top = `${y1}px`;
+                lightning.style.transform = `rotate(${angle}deg)`;
+                lightning.style.opacity = '0';
+                
+                document.body.appendChild(lightning);
+                
+                // Animate the lightning
+                setTimeout(() => {
+                    lightning.style.opacity = '0.8';
+                    setTimeout(() => {
+                        lightning.style.opacity = '0';
+                        setTimeout(() => lightning.remove(), 1000);
+                    }, 200);
+                }, 100);
+            }
+        }
+
+        // Create rain drops for a section
+        function createRainDrops(containerId, count = 30) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            // Clear existing rain drops
+            container.innerHTML = '';
+            
+            // Create new rain drops
+            for (let i = 0; i < count; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop animate-rain';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                drop.style.animationDuration = `${0.5 + Math.random() * 1}s`;
+                container.appendChild(drop);
+            }
+        }
+
+        // Project filtering function
+        function showProjects(category) {
+            // Update active tab
+            document.querySelectorAll('.project-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-purple-600');
+                tab.classList.add('bg-white/10', 'backdrop-blur-sm', 'border', 'border-white/20');
+            });
+
+            const activeTab = document.querySelector(`.project-tab[data-category="${category}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+                activeTab.classList.remove('bg-white/10', 'backdrop-blur-sm', 'border', 'border-white/20');
+                activeTab.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-purple-600');
+            }
+
+            // Show thunder light effect
+            showThunderLight();
+            
+            // Create lightning between blocks
+            createLightning();
+
+            // Render projects
+            renderProjects(category);
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('-translate-x-full');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Show thunder light effect
+                    showThunderLight();
+                    
+                    // Create lightning between blocks
+                    createLightning();
+                    
+                    setTimeout(() => {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }
+            });
+        });
+
+        // Project modal functions
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const project = projectData[projectId];
+            
+            if (!project) return;
+
+            // Populate modal content
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalImage').src = project.image;
+            document.getElementById('modalDescription').textContent = project.description;
+            document.getElementById('modalCategory').textContent = getCategoryLabel(project.category);
+            document.getElementById('modalClient').textContent = project.client;
+            document.getElementById('modalDuration').textContent = project.duration;
+
+            // Populate technologies
+            const techContainer = document.getElementById('modalTechnologies');
+            techContainer.innerHTML = '';
+            project.technologies.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = `bg-${tech.color}-600/20 text-${tech.color}-300 px-3 py-1 rounded-full text-sm`;
+                span.textContent = tech.name;
+                techContainer.appendChild(span);
+            });
+
+            // Populate features
+            const featuresContainer = document.getElementById('modalFeatures');
+            featuresContainer.innerHTML = '';
+            project.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start';
+                li.innerHTML = `<span class="text-green-400 mr-2">✓</span>${feature}`;
+                featuresContainer.appendChild(li);
+            });
+
+            // Set up button URLs
+            const liveDemoBtn = document.getElementById('liveDemoBtn');
+            const sourceCodeBtn = document.getElementById('sourceCodeBtn');
+            
+            liveDemoBtn.onclick = function() {
+                if (project.liveUrl && project.liveUrl !== '#') {
+                    window.open(project.liveUrl, '_blank');
+                }
+            };
+            
+            sourceCodeBtn.onclick = function() {
+                if (project.sourceUrl && project.sourceUrl !== '#') {
+                    window.open(project.sourceUrl, '_blank');
+                }
+            };
+
+            // Show modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                closeProjectModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
+        // Resume download function
+//         function downloadResume() {
+//             // Create a sample resume content
+//             const resumeContent = `
+// NAEEM LIAQAT
+// Software Engineer
+// Email: naeemliaqat41@yahoo.com | Phone: 0343-3669641 | Location: Barkat Market Lahore, Pakistan
+
+// PROFESSIONAL SUMMARY
+// Experienced Software Engineer with a proven track record in web development and software maintenance. 
+// Skilled in debugging, troubleshooting, and delivering optimized solutions for enhanced software performance.
+// Expertise in PHP, Laravel, WordPress, and modern web technologies.
+
+// TECHNICAL SKILLS
+// • Frontend: HTML5, CSS3, JavaScript, jQuery, Bootstrap, Tailwind CSS, MUI CSS
+// • Backend: PHP, Laravel, Yii Framework, WordPress
+// • Databases: MySQL
+// • Tools: Git, REST APIs, AJAX
+// • Other: Responsive Design, SEO Optimization, Performance Optimization
+
+// PROFESSIONAL EXPERIENCE
+// Software Engineer | OptimaGeeks | 06/2022 - Present
+// • Proficient in debugging and troubleshooting code to identify and resolve issues efficiently
+// • Leveraged Chart.js for creating dynamic and interactive data visualizations
+// • Proficient in WordPress plugin and theme customization, resolving bugs, and optimizing websites
+
+// Associate Software Engineer | Brown Tech Int. | 08/2021 - 06/2022
+// • Led the development of the View Home System project with user registration and role management
+// • Developed Tatum Gaming Hub with Tatum API BNB account creation during registration
+
+// PHP/Laravel Web Developer | Arysynce Technology | 02/2021 - 08/2021
+// • Designed and developed user authentication systems using core PHP
+// • Created custom websites from scratch, optimizing them for performance
+
+// EDUCATION
+// Bachelor of Software Engineering | Virtual University of Pakistan | 2017 - 2021
+
+// NOTABLE PROJECTS
+// • E-Commerce Platforms: Multiple online stores with payment integration
+// • Real Estate Platform: Yii2-based property sales and rentals
+// • LMS Platform: WordPress-based learning management system
+// • AI Image Generator: MERN stack application with ClipDrop API
+//             `.trim();
+
+//             // Create and download the resume
+//             const blob = new Blob([resumeContent], { type: 'text/plain' });
+//             const url = window.URL.createObjectURL(blob);
+//             const a = document.createElement('a');
+//             a.href = url;
+//             a.download = 'Naeem_Liaqat_Resume.txt';
+//             document.body.appendChild(a);
+//             a.click();
+//             document.body.removeChild(a);
+//             window.URL.revokeObjectURL(url);
+
+//             // Show download confirmation
+//             const originalText = event.target.innerHTML;
+//             event.target.innerHTML = '✅ Downloaded!';
+//             event.target.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+            
+//             setTimeout(() => {
+//                 event.target.innerHTML = originalText;
+//                 event.target.style.background = '';
+//                 event.target.className = event.target.className;
+//             }, 2000);
+//         }
+
+
+function downloadResume(event) {
+        // Path to your PDF file
+        const resumePath = "./assets/NaeemLiaqat-1-25.pdf";
+
+        // Create a temporary <a> element for download
+        const a = document.createElement('a');
+        a.href = resumePath;
+        a.download = 'Naeem_Liaqat_Resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        // Show download confirmation
+        const originalText = event.target.innerHTML;
+        event.target.innerHTML = '✅ Downloaded!';
+        event.target.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+        
+        setTimeout(() => {
+            event.target.innerHTML = originalText;
+            event.target.style.background = '';
+            event.target.className = event.target.className;
+        }, 2000);
+    }
+
+        // Typing animation
+        function setupTypingAnimation() {
+            const textElement = document.getElementById('typing-text');
+            const texts = [
+                "Software Engineer",
+                "Laravel Developer",
+                "WordPress Expert",
+                "PHP Developer",
+                "Full Stack Developer"
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingDelay = 100;
+            let deletingDelay = 50;
+            let pauseDelay = 1500;
+
+            function type() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    textElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingDelay = deletingDelay;
+                } else {
+                    textElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingDelay = 100;
+                }
+
+                if (!isDeleting && charIndex === currentText.length) {
+                    typingDelay = pauseDelay;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    typingDelay = 500;
+                }
+
+                setTimeout(type, typingDelay);
+            }
+
+            // Start the typing animation
+            setTimeout(type, 1000);
+        }
+
+        // Initialize projects on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects('all');
+            setupTypingAnimation();
+            
+            // Create rain drops for all sections
+            createRainDrops('home-rain-container', 40);
+            createRainDrops('about-rain-container', 30);
+            createRainDrops('projects-rain-container', 40);
+            createRainDrops('contact-rain-container', 30);
+            
+            // Show thunder light effect on page load
+            setTimeout(showThunderLight, 1000);
+            
+            // Create random lightning effects periodically
+            setInterval(createLightning, 5000);
+        });
+    </script>
+</body>
+</html>
