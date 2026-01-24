@@ -431,6 +431,30 @@ const projectData = {
     },
 
     // MERN Stack Projects
+    zenTaskAI: {
+        title: "ZenTask AI – Enterprise Project Management Platform",
+        image: "assets/images/ProjectManagerHomePage.png",
+        category: "mern",
+        client: "Enterprise Solution",
+        duration: "Ongoing",
+        description: "A high-performance, real-time Project Management Tool built to solve complex workflows with AI-driven automation and robust security. This platform allows teams to collaborate seamlessly while leveraging LLMs to reduce administrative overhead.",
+        technologies: [
+            { name: "Next.js 14", color: "blue" },
+            { name: "NestJS", color: "red" },
+            { name: "Socket.io", color: "gray" },
+            { name: "Prisma", color: "blue" },
+            { name: "MongoDB", color: "green" },
+            { name: "OpenAI GPT-4", color: "green" }
+        ],
+        features: [
+            "AI Task Architect: Converts unstructured thoughts into categorized tasks with 95% accuracy",
+            "Enterprise Security: Full 2FA system with QR codes and TOTP verification",
+            "Real-Time Collaboration: Live Kanban updates and user presence tracking via WebSockets",
+            "Optimized Data Layer: Prisma-driven MongoDB queries for sub-second response times"
+        ],
+        liveUrl: "assets/videos/Create Next App.mp4",
+        sourceUrl: "https://github.com/naeemliaqatweb/ProjectManagerProject"
+    },
     imagify: {
         title: "Imagify – AI Image Generator",
         image: "https://images.unsplash.com/photo-1643330683233-ff2ac89b002c?w=800",
