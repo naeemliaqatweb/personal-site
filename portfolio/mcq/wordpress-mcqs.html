@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Naeem Liaqat(Portfolio)</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a>
+          <li><a href="./interview.html" target="_blank" class="nav-link scrollto"><i class='bx bxs-file-pdf'></i> <span>InterView</span></a>
+        </li>
+        <li><a href="../msqs.html" target="_blank" class="nav-link scrollto"><i class='bx bx-list-check'></i>
+          <span>MCQ's</span></a>
+        </li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Naeem Liaqat</h1>
+      <p>I'm <span class="typed"
+          data-typed-items="Software Enginee , PHP Developer, Laravel Developer, Yii Developer , Wordpress Developer , React & Node Js"></span>
+      </p>
+      <div class="social-links" target="_blank">
+        <a href="mailto:naeemliaqat41@yahoo.com" class="yahoo"><i class="bx bxl-yahoo"></i></a>
+        <a href="https://www.facebook.com/naeemliaqat41" class="facebook"><i class="bx bxl-facebook"
+            target="_blank"></i></a>
+        <a href="https://www.linkedin.com/in/naeem-liaqat-85970719b/" class="linkedin"><i class="bx bxl-linkedin"
+            target="_blank"></i></a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <div class="container my-5">
+        <h2 class="mb-4 text-center"  id="quiz-title">WordPress MCQ Quiz</h2>
+        <div id="quiz-container" class="row"></div>
+        <div id="result" class="text-center mt-4 fw-bold fs-4"></div>
+      </div>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Naeem Liaqat</h3>
+      <p>Thanks For Visit my Portfolio.If You are interested to click Social link to contact me.</p>
+      <div class="social-links">
+        <a href="mailto:naeemliaqat41@yahoo.com" class="yahoo"><i class="bx bxl-yahoo"></i></a>
+        <a href="https://www.facebook.com/naeemliaqat41" class="facebook"><i class="bx bxl-facebook"
+            target="_blank"></i></a>
+        <a href="https://www.linkedin.com/in/naeem-liaqat-85970719b/" class="linkedin"><i class="bx bxl-linkedin"
+            target="_blank"></i></a>
+
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>2025</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+
+        Designed by <strong> Naeem Liaqat</strong>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const level = urlParams.get('level') || 'basic';
+        const scores = JSON.parse(localStorage.getItem('wordpress_quiz_scores') || '{}');
+    
+        const currentPage = window.location.pathname.split('/').pop(); // dynamic filename
+    
+        if (level === 'intermediate' && (!scores.basic || scores.basic < 20)) {
+          alert("Please complete Basic level with at least 20 points to unlock Intermediate.");
+          window.location.href = `${currentPage}?level=basic`;
+        }
+    
+        if (level === 'advanced' && (!scores.intermediate || scores.intermediate < 20)) {
+          alert("Please complete Intermediate level with at least 20 points to unlock Advanced.");
+          window.location.href = `${currentPage}?level=intermediate`;
+        }
+    
+        if (level === 'basic' && scores.basic >= 20) {
+          alert("You've already passed Basic. Redirecting to Intermediate.");
+          window.location.href = `${currentPage}?level=intermediate`;
+        }
+    
+    
+        // Load questions per level
+        const questionSets = {
+          basic: [
+          { question: "What is WordPress?", options: ["A CMS", "A web browser", "A programming language", "A database"], answer: 0 },
+          { question: "Which language is WordPress primarily written in?", options: ["PHP", "Python", "Java", "Ruby"], answer: 0 },
+          { question: "What does CMS stand for?", options: ["Content Management System", "Computer Management Server", "Control Media Setup", "Custom Module Structure"], answer: 0 },
+          { question: "Where are WordPress themes stored?", options: ["wp-content/themes", "wp-admin/themes", "themes/", "wp-settings/themes"], answer: 0 },
+          { question: "What is the default WordPress database table prefix?", options: ["wp_", "wpress_", "dbwp_", "wpdb_"], answer: 0 },
+          { question: "Which file is the core configuration file in WordPress?", options: ["wp-config.php", "config.php", "settings.php", "wp-settings.php"], answer: 0 },
+          { question: "Which folder contains the plugins?", options: ["wp-content/plugins", "wp-plugins/", "plugins/", "admin/plugins"], answer: 0 },
+          { question: "Which database does WordPress use by default?", options: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"], answer: 0 },
+          { question: "What is the role of the `functions.php` file?", options: ["Add custom PHP code to theme", "Define database schema", "Update WordPress core", "Load admin dashboard"], answer: 0 },
+          { question: "What does the WordPress loop do?", options: ["Displays posts", "Updates plugins", "Secures login", "Connects to database"], answer: 0 },
+          { question: "Which template file is used to display a single blog post?", options: ["single.php", "post.php", "content-single.php", "blog-single.php"], answer: 0 },
+          { question: "How do you log in to a WordPress admin panel?", options: ["yoursite.com/wp-admin", "yoursite.com/admin-login", "yoursite.com/dashboard", "yoursite.com/login/admin"], answer: 0 },
+          { question: "Which file starts the WordPress theme rendering process?", options: ["index.php", "home.php", "front-page.php", "start.php"], answer: 0 },
+          { question: "Which role has the highest privileges in WordPress?", options: ["Administrator", "Editor", "Author", "Contributor"], answer: 0 },
+          { question: "Which of the following is NOT a default post type?", options: ["Portfolio", "Post", "Page", "Attachment"], answer: 0 },
+          { question: "What is a widget in WordPress?", options: ["A small content block", "A theme", "A plugin", "An image"], answer: 0 },
+          { question: "What is a shortcode?", options: ["A placeholder for dynamic content", "A plugin", "A login token", "A script file"], answer: 0 },
+          { question: "How do you install a plugin?", options: ["Plugins > Add New", "Settings > Add Plugin", "Themes > Install Plugin", "Dashboard > Extensions"], answer: 0 },
+          { question: "What is the WordPress customizer used for?", options: ["Modifying theme appearance", "Editing database", "Uploading media", "Updating plugins"], answer: 0 },
+          { question: "What does the Media Library store?", options: ["Images and files", "Code snippets", "Themes", "Database tables"], answer: 0 },
+          { question: "What is a permalink in WordPress?", options: ["URL structure for posts/pages", "Login credential", "Media link", "Plugin version"], answer: 0 },
+          { question: "Which content editor does WordPress use by default?", options: ["Gutenberg", "Classic Editor", "TinyMCE", "Elementor"], answer: 0 },
+          { question: "Which file is responsible for theme metadata?", options: ["style.css", "theme.json", "theme.php", "meta.php"], answer: 0 },
+          { question: "How do you create a new post?", options: ["Posts > Add New", "Pages > Add New", "Media > Add New", "Dashboard > Create Post"], answer: 0 },
+          { question: "What is a child theme?", options: ["A theme that inherits styles from another", "A plugin", "A database", "A page template"], answer: 0 },
+          { question: "What is the difference between a page and a post?", options: ["Posts are time-based; pages are static", "Pages are comments-enabled", "Posts are for admins only", "Pages can’t have media"], answer: 0 },
+          { question: "What does a plugin do in WordPress?", options: ["Adds functionality", "Changes database schema", "Controls hosting", "Adds themes"], answer: 0 },
+          { question: "What is Akismet used for?", options: ["Spam protection", "Image compression", "Caching", "SEO"], answer: 0 },
+          { question: "What does the `wp_head()` function do?", options: ["Loads scripts/styles in header", "Defines the main loop", "Connects to admin", "Redirects the homepage"], answer: 0 },
+          { question: "How do you change your site’s tagline?", options: ["Settings > General", "Appearance > Tagline", "Users > Profile", "Dashboard > Site Tagline"], answer: 0 }
+
+          ],
+    
+          intermediate: [
+          { question: "What does the `wp_enqueue_script()` function do?", options: ["Adds a JavaScript file to the theme", "Loads CSS", "Initializes database", "Creates a shortcode"], answer: 0 },
+          { question: "Which hook is used to add functionality after theme setup?", options: ["after_setup_theme", "init", "wp_loaded", "template_redirect"], answer: 0 },
+          { question: "How can you create a custom post type?", options: ["Using `register_post_type()`", "Creating a new theme", "Modifying functions.php directly", "Using `add_post_type()`"], answer: 0 },
+          { question: "What is the purpose of `wp_nonce_field()`?", options: ["Security against CSRF", "Form styling", "Database logging", "Input formatting"], answer: 0 },
+          { question: "Which function retrieves the site URL?", options: ["get_site_url()", "get_url()", "get_blog_url()", "get_base_url()"], answer: 0 },
+          { question: "What is the use of `is_page()` function?", options: ["Checks if a page is being viewed", "Checks if user is logged in", "Retrieves a page ID", "Displays the page title"], answer: 0 },
+          { question: "How can you make a custom menu in WordPress?", options: ["Using `register_nav_menus()`", "Using `add_theme_support()`", "By creating a plugin", "Using `wp_add_menu()`"], answer: 0 },
+          { question: "Which hook is used to enqueue front-end scripts?", options: ["wp_enqueue_scripts", "enqueue_scripts", "theme_enqueue", "init_scripts"], answer: 0 },
+          { question: "What is the purpose of `get_template_part()`?", options: ["Includes reusable template parts", "Loads external JS", "Registers a theme", "Adds a new widget"], answer: 0 },
+          { question: "Which constant turns on debugging in WordPress?", options: ["WP_DEBUG", "WP_DEV", "DEBUG_MODE", "ENABLE_DEBUG"], answer: 0 },
+          { question: "How do you register a sidebar?", options: ["register_sidebar()", "add_sidebar()", "create_sidebar()", "enable_sidebar()"], answer: 0 },
+          { question: "Which function retrieves a post's featured image URL?", options: ["get_the_post_thumbnail_url()", "get_post_image()", "get_thumbnail()", "get_featured_image_url()"], answer: 0 },
+          { question: "Which action hook fires after a plugin is activated?", options: ["register_activation_hook()", "plugin_loaded()", "init_plugin()", "on_plugin_start()"], answer: 0 },
+          { question: "What does `add_action()` do?", options: ["Attaches a custom function to a hook", "Adds a script", "Creates a shortcode", "Saves a post"], answer: 0 },
+          { question: "What does `the_content()` output?", options: ["Post content", "Title", "Excerpt", "Custom field"], answer: 0 },
+          { question: "What does `wp_footer()` do?", options: ["Adds content to the footer", "Saves theme options", "Resets footer layout", "Removes scripts"], answer: 0 },
+          { question: "Which function checks if the user is logged in?", options: ["is_user_logged_in()", "check_user()", "user_logged()", "validate_login()"], answer: 0 },
+          { question: "How do you register a custom taxonomy?", options: ["register_taxonomy()", "add_custom_taxonomy()", "create_taxonomy()", "register_term()"], answer: 0 },
+          { question: "What is a transients API used for?", options: ["Storing cached data", "Creating menus", "Validating logins", "Uploading media"], answer: 0 },
+          { question: "Which table stores user information in WordPress?", options: ["wp_users", "wp_usermeta", "wp_userdata", "wp_accounts"], answer: 0 },
+          { question: "What is the use of `wp_die()`?", options: ["Terminates execution with a message", "Redirects user", "Clears cache", "Deletes a post"], answer: 0 },
+          { question: "How do you create an options page in WordPress admin?", options: ["add_options_page()", "register_option_page()", "wp_add_page()", "create_settings_page()"], answer: 0 },
+          { question: "Which hook would you use to modify post content?", options: ["the_content", "post_content", "post_output", "wp_content"], answer: 0 },
+          { question: "How do you create a custom shortcode?", options: ["add_shortcode()", "register_shortcode()", "wp_shortcode()", "enable_shortcode()"], answer: 0 },
+          { question: "What function is used to retrieve a post meta field?", options: ["get_post_meta()", "get_meta()", "retrieve_meta()", "meta_get()"], answer: 0 },
+          { question: "How do you display a navigation menu in a theme?", options: ["wp_nav_menu()", "display_menu()", "get_menu()", "show_menu()"], answer: 0 },
+          { question: "Which function retrieves a user’s role?", options: ["get_userdata()->roles", "get_user_role()", "user()->role", "wp_get_user_roles()"], answer: 0 },
+          { question: "What does `get_option()` do?", options: ["Retrieves a saved setting from the options table", "Gets a post option", "Fetches plugin version", "Loads theme defaults"], answer: 0 },
+          { question: "Which template file displays the 404 page?", options: ["404.php", "error.php", "notfound.php", "page404.php"], answer: 0 },
+          { question: "How do you define support for post thumbnails?", options: ["add_theme_support('post-thumbnails')", "enable_featured_image()", "add_post_thumbnails()", "register_thumbnail_support()"], answer: 0 }
+
+          ],
+    
+          advanced: [
+          { question: "What does `WP_REST_Controller` help you build?", options: ["Custom REST API endpoints", "Admin menus", "Customizer settings", "Theme templates"], answer: 0 },
+          { question: "What is the purpose of `register_rest_route()`?", options: ["Registers a custom REST API route", "Creates a rewrite rule", "Adds a rewrite endpoint", "Enables REST API for posts"], answer: 0 },
+          { question: "Which function schedules a recurring event in WordPress?", options: ["wp_schedule_event()", "schedule_event()", "add_event_schedule()", "register_cron_job()"], answer: 0 },
+          { question: "What global variable holds the main WordPress Query?", options: ["$wp_query", "$post", "$main_query", "$query_main"], answer: 0 },
+          { question: "How can you prevent direct file access in a plugin file?", options: ["Check `defined('ABSPATH')`", "Check `isset($_SERVER['PHP_SELF'])`", "Use `exit;` at the top", "Use `wp_die()`"], answer: 0 },
+          { question: "What is the use of `flush_rewrite_rules()`?", options: ["Refresh permalink structure", "Clear plugin cache", "Reset settings", "Force logout users"], answer: 0 },
+          { question: "What is a `mu-plugin` in WordPress?", options: ["Must-Use plugin loaded automatically", "Multi-User plugin", "Menu Utility plugin", "Minimal Utility plugin"], answer: 0 },
+          { question: "Where are WordPress roles and capabilities stored?", options: ["wp_options & wp_usermeta", "wp_users only", "wp_roles", "wp_roles & wp_meta"], answer: 0 },
+          { question: "Which function registers a new image size?", options: ["add_image_size()", "set_image_size()", "register_thumbnail_size()", "image_size_register()"], answer: 0 },
+          { question: "What is the purpose of the `pre_get_posts` action?", options: ["Modify main query before execution", "Insert post data", "Control pagination", "Adjust REST routes"], answer: 0 },
+          { question: "Which function would you use to verify a nonce?", options: ["check_admin_referer()", "verify_nonce()", "confirm_nonce()", "validate_nonce()"], answer: 0 },
+          { question: "Which function is used to update a custom post meta value?", options: ["update_post_meta()", "set_meta()", "edit_meta()", "change_post_meta()"], answer: 0 },
+          { question: "Which object handles database interaction in WordPress?", options: ["$wpdb", "$db", "$sql", "$database"], answer: 0 },
+          { question: "How do you enqueue scripts only on the admin panel?", options: ["admin_enqueue_scripts", "enqueue_admin", "backend_scripts", "admin_only_scripts"], answer: 0 },
+          { question: "What is the default WordPress table prefix?", options: ["wp_", "wpx_", "wpdb_", "wpadmin_"], answer: 0 },
+          { question: "How can you create a multisite network?", options: ["Define `WP_ALLOW_MULTISITE` in wp-config.php", "Install the network plugin", "Use the multisite wizard", "Activate in functions.php"], answer: 0 },
+          { question: "What does the `add_settings_section()` function do?", options: ["Adds a section to a settings page", "Creates a theme section", "Registers a new option", "Defines a new post type"], answer: 0 },
+          { question: "Which class is used to create custom widgets?", options: ["WP_Widget", "WP_Custom_Widget", "WidgetBuilder", "CustomWidget"], answer: 0 },
+          { question: "How are rewrite rules stored in WordPress?", options: ["In the database under `rewrite_rules`", "In `.htaccess` only", "In a PHP config file", "In `functions.php`"], answer: 0 },
+          { question: "What is `sanitize_text_field()` used for?", options: ["Clean input data", "Hash passwords", "Validate email", "Escape output HTML"], answer: 0 },
+          { question: "What is the function of `get_posts()`?", options: ["Retrieve an array of posts based on query params", "Output posts to HTML", "Save posts to database", "Check post types"], answer: 0 },
+          { question: "How do you log custom messages in WordPress?", options: ["error_log()", "wp_log()", "write_log()", "debug_log()"], answer: 0 },
+          { question: "What does `add_filter()` do in WordPress?", options: ["Modifies or filters data via a hook", "Adds data to the database", "Triggers custom cron jobs", "Registers a REST endpoint"], answer: 0 },
+          { question: "Which function retrieves the ID of the current logged-in user?", options: ["get_current_user_id()", "get_user_id()", "current_user_id()", "user_logged_id()"], answer: 0 },
+          { question: "What is the role of the `init` hook?", options: ["Initialize custom post types, taxonomies, etc.", "Display content", "Load plugins", "Create cron jobs"], answer: 0 },
+          { question: "What is the correct way to create a secure AJAX call in WordPress?", options: ["Use `wp_ajax_` and `wp_nonce` together", "Create custom JS handler", "Use admin-ajax directly without nonce", "Call PHP directly via fetch()"], answer: 0 },
+          { question: "Which hook runs after WordPress has loaded but before headers are sent?", options: ["template_redirect", "init", "wp_loaded", "send_headers"], answer: 0 },
+          { question: "What is a capability in WordPress?", options: ["A permission for a specific task", "A menu item", "A plugin action", "A custom field"], answer: 0 },
+          { question: "Which function is used to fetch a list of users?", options: ["get_users()", "wp_get_users()", "fetch_users()", "list_users()"], answer: 0 },
+          { question: "How do you register a custom REST field?", options: ["register_rest_field()", "add_rest_field()", "create_api_field()", "register_api_meta()"], answer: 0 }
+          ]
+        };
+    
+        const questions = questionSets[level];
+        const quizTitle = document.getElementById("quiz-title");
+        quizTitle.textContent += ` - ${level.charAt(0).toUpperCase() + level.slice(1)} Level`;
+    
+        const quizContainer = document.getElementById("quiz-container");
+        const resultContainer = document.getElementById("result");
+        let score = 0;
+    
+        questions.forEach((q, index) => {
+          // Combine options with their original index
+          const shuffledOptions = q.options.map((opt, i) => ({ text: opt, isCorrect: i === q.answer }));
+    
+          // Shuffle the array
+          for (let i = shuffledOptions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+          }
+    
+          const box = document.createElement("div");
+          box.classList.add("p-3", "mb-4", "bg-light", "border", "rounded", "col-md-6");
+          box.innerHTML = `<h5>Q${index + 1}. ${q.question}</h5>`;
+    
+          shuffledOptions.forEach((optObj) => {
+            const btn = document.createElement("button");
+            btn.classList.add("btn", "btn-outline-primary", "d-block", "my-2", "w-100", "text-start");
+            btn.textContent = optObj.text;
+    
+            btn.addEventListener("click", function () {
+              if (box.classList.contains("answered")) return;
+    
+              box.classList.add("answered");
+              const buttons = box.querySelectorAll("button");
+    
+              buttons.forEach((b, idx) => {
+                b.classList.add("disabled");
+                b.disabled = true;
+    
+                if (shuffledOptions[idx].isCorrect) {
+                  b.classList.replace("btn-outline-primary", "btn-success");
+                }
+              });
+    
+              if (!optObj.isCorrect) {
+                btn.classList.replace("btn-outline-primary", "btn-danger");
+              } else {
+                score++;
+              }
+    
+              if (document.querySelectorAll(".answered").length === questions.length) {
+                const scores = JSON.parse(localStorage.getItem('wordpress_quiz_scores') || '{}');
+                scores[level] = score;
+                localStorage.setItem('wordpress_quiz_scores', JSON.stringify(scores));
+    
+                const resultMsg = `You scored <span class="text-success">${score}</span> out of <span class="text-primary">${questions.length}</span>`;
+                resultContainer.innerHTML = resultMsg;
+    
+                // Show total if on advanced
+                if (level === 'advanced') {
+                  const total = (scores.basic || 0) + (scores.intermediate || 0) + (scores.advanced || 0);
+                  resultContainer.innerHTML += `<br>Total Score: <span class="text-primary">${total}</span> / 90`;
+                }
+    
+                // Show Next Level button only if score >= 20
+                if (score >= 20) {
+                  const nextLevel = level === 'basic' ? 'intermediate' :
+                    level === 'intermediate' ? 'advanced' : null;
+    
+                  if (nextLevel) {
+                    const btn = document.createElement("a");
+                    btn.href = `${currentPage}?level=${nextLevel}`;
+                    btn.className = "btn btn-success mt-4";
+                    btn.textContent = `Start ${nextLevel.charAt(0).toUpperCase() + nextLevel.slice(1)} Level`;
+                    resultContainer.appendChild(document.createElement("br"));
+                    resultContainer.appendChild(btn);
+                  }
+                }
+              }
+            });
+    
+            box.appendChild(btn);
+          });
+    
+          quizContainer.appendChild(box);
+        });
+    
+      </script>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
