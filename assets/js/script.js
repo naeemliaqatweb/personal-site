@@ -662,7 +662,8 @@ function createLightning() {
             lightning.style.opacity = '0';
             lightning.style.filter = `blur(${Math.random() * 2}px)`;
 
-            document.body.appendChild(lightning);
+            const container = document.getElementById('lightning-container') || document.body;
+            container.appendChild(lightning);
 
             // Animate the lightning
             setTimeout(() => {

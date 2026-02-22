@@ -57,6 +57,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Rainbow Effect -->
+        <div class="rainbow"></div>
+
         <!-- 3D Animated Blocks -->
         <!-- 3D Animated Blocks -->
         <div class="cube-container" style="top: 20%; left: 15%;">
@@ -100,15 +103,24 @@
             </div>
         </div>
 
-        <!-- Rain drops for home section -->
-        <div id="home-rain-container" class="absolute inset-0 pointer-events-none"></div>
+        <!-- Weather Layers -->
+        <div class="weather-layer storm-layer">
+            <div id="home-rain-container" class="absolute inset-0 pointer-events-none"></div>
+            <div class="cloud animate-cloud"
+                style="width: 300px; height: 100px; top: 10%; left: 0%; animation-delay: 0s;"></div>
+            <div class="cloud animate-cloud"
+                style="width: 250px; height: 80px; top: 25%; left: 0%; animation-delay: 5s;"></div>
+            <div class="cloud animate-cloud"
+                style="width: 200px; height: 70px; top: 40%; left: 0%; animation-delay: 10s;"></div>
+            <div id="lightning-container" class="absolute inset-0 pointer-events-none"></div>
+        </div>
 
-        <!-- Clouds for home section -->
-        <div class="cloud animate-cloud" style="width: 300px; height: 100px; top: 10%; left: 0%; animation-delay: 0s;">
+        <div class="weather-layer rainbow-layer">
+            <div class="rainbow"></div>
         </div>
-        <div class="cloud animate-cloud" style="width: 250px; height: 80px; top: 25%; left: 0%; animation-delay: 5s;">
-        </div>
-        <div class="cloud animate-cloud" style="width: 200px; height: 70px; top: 40%; left: 0%; animation-delay: 10s;">
+
+        <div class="weather-layer sun-layer">
+            <div class="sun"></div>
         </div>
 
         <div class="relative z-10 text-center px-6 animate-fadeInUp">
@@ -143,7 +155,7 @@
     <div class="section-divider"></div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-6 relative">
+    <section id="about" class="py-20 px-6 relative overflow-hidden">
         <!-- Background Elements -->
         <!-- Background Elements -->
         <div class="cube-container" style="top: 20%; left: 5%;">
@@ -217,7 +229,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 bg-black/20 relative">
+    <section id="projects" class="py-20 px-6 bg-black/20 relative overflow-hidden">
         <!-- Background Elements -->
         <!-- Background Elements -->
         <div class="cube-container" style="top: 15%; left: 7%;">
@@ -367,7 +379,7 @@
     </div>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 relative">
+    <section id="contact" class="py-20 px-6 relative overflow-hidden">
         <!-- Background Elements -->
         <!-- Background Elements -->
         <div class="cube-container" style="top: 20%; left: 10%;">
